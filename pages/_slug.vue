@@ -1,5 +1,5 @@
 <template>
   <div>
-    hello
+    This will be a hook
   </div>
 </template>
