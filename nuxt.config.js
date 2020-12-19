@@ -1,5 +1,6 @@
 export default {
-  target: 'static',
+  // target: 'static',
+  mode: 'universal',
   head: {
     title: 'Vue Hooks',
     meta: [
