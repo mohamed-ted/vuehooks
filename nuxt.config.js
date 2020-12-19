@@ -1,5 +1,4 @@
 export default {
-  // target: 'static',
   mode: 'universal',
   head: {
     title: 'Vue Hooks',
