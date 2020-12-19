@@ -1,0 +1,34 @@
+name: Export
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install and Build 🔧
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+        run: |
+          yarn install
+          yarn generate
+
+      - name: Deploy 🚀
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: public
+          FOLDER: ./dist
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
